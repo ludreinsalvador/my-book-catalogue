@@ -1,0 +1,132 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
+    <style>
+        body {
+            background-color: #CAE9FF;
+            font-family: Arial, sans-serif;
+        }
+
+        .jumbotron {
+            background-color: #00B4D8;
+            background-position: center;
+            padding: 4rem;
+            margin-bottom: 0;
+            transition: background-color 0.3s;
+        }
+
+            .jumbotron h1 {
+                font-size: 3.5rem;
+                color: #03045E;
+                opacity: 0;
+                transform: translateY(20px);
+                animation: fadeInUp 1s forwards;
+            }
+
+        .lead {
+            font-size: 1.5rem;
+            color: #03045E;
+        }
+
+        .learn-more {
+            color: #03045E;
+            font-weight: bold;
+        }
+
+        .book-feature {
+            padding: 2rem;
+            background-color: #90E0EF;
+            border: 1px solid #CAF0F8;
+            border-radius: 0.25rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .book-feature h2 {
+                font-size: 1.75rem;
+                margin-bottom: 1rem;
+                color: #03045E;
+                transition: color 0.3s;
+            }
+
+            .book-feature:hover {
+                transform: translateY(-10px);
+                background-color: #00B4D8;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            }
+
+                .book-feature:hover h2 {
+                    color: #CAF0F8;
+                }
+
+        .jumbotron:hover {
+            background-color: #90E0EF;
+        }
+
+        .jumbotron h1.display-6,
+        .jumbotron p.lead {
+            color: #03045E;
+            transition: color 0.3s;
+        }
+
+        .jumbotron:hover h1.display-6,
+        .jumbotron:hover p.lead {
+            color: #0077B6;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".jumbotron h1").animate({
+                opacity: 1,
+                translateY: "0"
+            }, 1000);
+        });
+    </script>
+</head>
+<body>
+
+    <div class="jumbotron text-center mb-0">
+        <h1 class="display-6"><strong>Welcome to My Book Catalogue</strong></h1>
+        <br>
+        <p class="lead">Your very own book collection recorder supported by <a class="learn-more" href="https://docs.microsoft.com/aspnet/core" target="_blank" rel="noopener noreferrer">ASP.NET Core Web Development</a></p>
+        <a class="btn btn-primary btn-lg" href="#features" role="button">Explore Features</a>
+    </div>
+
+    <div class="container mt-5" id="add-books">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="book-feature">
+                    <h2><strong>Add Books</strong></h2>
+                    <p>Enrich your catalog by adding books with their titles, author, ISBN, and publisher details.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="book-feature">
+                    <h2><strong>Find Books</strong></h2>
+                    <p>Effortlessly find or filter out your desired book based on its attributes and specifications.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="book-feature">
+                    <h2><strong>View, Edit, & Delete</strong></h2>
+                    <p>View recorded information about your books, edit their details, or remove them from the catalog.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

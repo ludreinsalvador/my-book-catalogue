@@ -1,0 +1,145 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
+    <style>
+        body {
+            background-color: #CAE9FF;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-top: 1px;
+            margin-bottom: 2px;
+        }
+
+        h1 {
+            color: #0077B6;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #1B4965;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #CAE9FF;
+            border-top: 1px solid #dee2e6;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        /* Interactive sidebar styles */
+        .sidebar {
+            position: fixed;
+            top: 100px;
+            left: 0;
+            width: 250px;
+            padding-top: 15px;
+            border-right: 1px solid #dee2e6;
+        }
+
+        .sidebar-item {
+            margin-bottom: 15px;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .sidebar-item:hover {
+                background-color: #62B6CB;
+                color: white;
+            }
+
+        .active-sidebar-item {
+            background-color: #62B6CB;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="sidebar">
+                    <div class="sidebar-item active-sidebar-item" data-target="#privacy-policy"><strong>Privacy Policy</strong></div>
+                    <div class="sidebar-item" data-target="#information-collection"><strong>Information Collection and Usage</strong></div>
+                    <div class="sidebar-item" data-target="#information-sharing"><strong>Information Sharing</strong></div>
+                    <div class="sidebar-item" data-target="#security"><strong>Security</strong></div>
+                    <div class="sidebar-item" data-target="#updates"><strong>Updates</strong></div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h1 class="mt-5">@ViewData["Title"]</h1>
+                <section id="privacy-policy">
+                    <p>At my website, I value your privacy and am committed to protecting the information you provide. This privacy policy outlines the types of data I collect and how I use, disclose, and safeguard it.</p>
+                </section>
+                <section id="information-collection">
+                    <h2><strong>Information Collection and Usage</strong></h2>
+                    <p>I may collect information that you provide directly to me when you use my website, including when you add, edit, and delete books from your catalog or contact us for support.</p>
+                    <p>The information I collect may include book titles, authors' names, International Standard Book Numbers (ISBN), and its Publisher. I use this information to provide and improve my services, personalize your experience, and communicate with you.</p>
+                    <ul>
+                        <li><strong>Book Management:</strong> The book information you provide helps you organize and manage your collection effectively.</li>
+                        <li><strong>Personalization:</strong> I use your data to offer tailored book filtering system and content based on your preferences.</li>
+                        <li><strong>Communication:</strong> I may send you emails or notifications related to your book catalogue activity and relevant book-related updates.</li>
+                    </ul>
+                </section>
+                <section id="information-sharing">
+                    <h2><strong>Information Sharing</strong></h2>
+                    <p>At MyBookCatalogue, I want to assure you that your privacy is a top priority for me. I am committed to handling your personal information with the utmost care and responsibility.</p>
+                    <p>I want to emphasize:</p>
+                    <ul>
+                        <li><strong>Data Confidentiality:</strong> I have a strict policy against selling, trading, or transferring your information to any third parties without your explicit consent. Your data remains secure and under your control at all times.</li>
+                        <li><strong>Collaboration with Trusted Partners:</strong> While preserving your privacy, I may collaborate with reputable service providers who play a pivotal role in ensuring the seamless operation of our website, and enhancing your overall experience on the platform.</li>
+                        <li><strong>Service Enhancement:</strong> Sharing information with these trusted service providers is solely for the purpose of improving my services and offering you the best experience possible. Rest assured, your data will be handled with the utmost care and in alignment with my commitment to safeguarding your privacy.</li>
+                    </ul>
+                </section>
+                <section id="security">
+                    <h2><strong>Security</strong></h2>
+                    <p>I implement a variety of security measures to protect your personal information. However, no method of transmission over the internet or electronic storage is completely secure, and I cannot guarantee absolute security.</p>
+                </section>
+                <section id="updates">
+                    <h2><strong>Updates</strong></h2>
+                    <p>This privacy policy may be updated periodically. I will notify you of any changes by posting the updated policy on this page. It is recommended to review this policy regularly for any changes.</p>
+                    <p>If you have any questions about this privacy policy, please contact me at privacy@mybookcatalogue.com.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        // Interactive sidebar behavior
+        $('.sidebar-item').on('click', function () {
+            var target = $(this).data('target');
+            $('html, body').animate({
+                scrollTop: $(target).offset().top - 100
+            }, 500);
+            $('.sidebar-item').removeClass('active-sidebar-item');
+            $(this).addClass('active-sidebar-item');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+﻿@page
+@model MyBookCatalogue.Pages.Book.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
+    <style>
+        body {
+            background-color: #CAF0F8;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #03045E;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #CAF0F8;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        dt {
+            color: #03045E;
+            font-weight: bold;
+            flex: 1;
+        }
+
+        dd {
+            color: #0077B6;
+            flex: 2;
+        }
+
+        a {
+            color: #0077B6;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+            a:hover {
+                color: #00B4D8;
+            }
+
+        .fadeInUp {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("h1").addClass("fadeInUp");
+        });
+    </script>
+</head>
+<body>
+    <h1><strong>Book Details</strong></h1>
+    <div class="container">
+        <h4><strong>Book Catalogue</strong></h4>
+        <hr />
+        <dl class="row">
+            <dt>@Html.DisplayNameFor(model => model.BookCatalogue.Title)</dt>
+            <dd>@Html.DisplayFor(model => model.BookCatalogue.Title)</dd>
+            <dt>@Html.DisplayNameFor(model => model.BookCatalogue.Author)</dt>
+            <dd>@Html.DisplayFor(model => model.BookCatalogue.Author)</dd>
+            <dt>@Html.DisplayNameFor(model => model.BookCatalogue.ISBN)</dt>
+            <dd>@Html.DisplayFor(model => model.BookCatalogue.ISBN)</dd>
+            <dt>@Html.DisplayNameFor(model => model.BookCatalogue.Publisher)</dt>
+            <dd>@Html.DisplayFor(model => model.BookCatalogue.Publisher)</dd>
+        </dl>
+    </div>
+    <div class="text-center mt-4">
+        <a class="btn btn-primary btn-lg" href="@(Url.Page("./Edit", new { id = Model.BookCatalogue?.ID }))" style="background-color: #0077B6; border-color: #0077B6;">Edit</a>
+        <a class="btn btn-primary btn-lg" href="@(Url.Page("./Index"))" style="background-color: #03045E; border-color: #03045E;">Back to List</a>
+    </div>
+</body>
+</html>

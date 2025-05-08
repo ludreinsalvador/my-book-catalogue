@@ -1,0 +1,106 @@
+﻿@page
+@model MyBookCatalogue.Pages.Book.IndexModel
+
+@{
+    ViewData["Title"] = "Book Catalogue";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #03045E;
+        }
+
+        /* Styling for table header */
+        th {
+            background-color: #90E0EF;
+            color: #03045E; /* Text color for table header */
+            font-weight: bold;
+        }
+
+        /* Styling for action buttons */
+        .btn-primary {
+            background-color: #0077B6;
+            border-color: #0077B6;
+        }
+
+            .btn-primary:hover {
+                background-color: #00B4D8;
+                border-color: #00B4D8;
+            }
+
+        /* Styling for search button */
+        .btn-outline-secondary {
+            color: #00B4D8;
+            border-color: #00B4D8;
+        }
+
+            .btn-outline-secondary:hover {
+                background-color: #00B4D8;
+                border-color: #00B4D8;
+                color: #CAF0F8;
+            }
+
+        tbody tr:hover {
+            background-color: #90E0EF;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h1>@ViewData["Title"]</h1>
+
+        <div class="mb-3">
+            <a class="btn btn-primary" asp-page="Create">Create New</a>
+        </div>
+
+        <form class="mb-4" asp-controller="Book" asp-action="Index" method="get">
+            <div class="input-group">
+                <input type="text" class="form-control" name="SearchString" placeholder="Search by Title">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Author</th>
+                    <th>ISBN</th>
+                    <th>Publisher</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.BookCatalogue)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Author)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ISBN)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Publisher)</td>
+                        <td>
+                            <a class="btn btn-sm btn-info" asp-page="./Details" asp-route-id="@item.ID">Details</a>
+                            <a class="btn btn-sm btn-warning" asp-page="./Edit" asp-route-id="@item.ID">Edit</a>
+                            <a class="btn btn-sm btn-danger" asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+﻿@page
+@model MyBookCatalogue.Pages.Book.EditModel
+
+@{
+    ViewData["Title"] = "Edit Book";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #90E0EF;
+            color: #03045E;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h4 {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        h1 {
+            color: #0077B6;
+        }
+
+        h4 {
+            color: #00B4D8;
+        }
+
+        hr {
+            border-color: #CAF0F8;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .col-md-4 {
+            background-color: #CAF0F8;
+            padding: 5px;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        label.control-label {
+            color: #0077B6;
+            margin-bottom: 4px;
+        }
+
+        .form-control {
+            max-width: 100%;
+            width: 400px; 
+            margin: 0 auto; 
+        }
+
+        .text-danger {
+            color: #03045E;
+        }
+
+        .btn-primary, .btn-primary.custom {
+            background-color: #0077B6;
+            border-color: #0077B6;
+        }
+
+            .btn-primary.custom {
+                background-color: #03045E;
+                border-color: #03045E;
+            }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .btn-top-margin {
+            margin-top: 15px;
+        }
+
+        .btn-lg-smaller, .btn-smaller {
+            font-size: 0.950rem;
+            padding: 0.3rem 0.3rem;
+        }
+    </style>
+</head>
+<body>
+    <h1><strong>Edit Book Record</strong></h1>
+    <h4>Book Catalogue</h4>
+    <hr />
+
+    <div class="container d-flex flex-column align-items-center">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookCatalogue.ID" />
+
+            <div class="form-group">
+                <label asp-for="BookCatalogue.Title" class="control-label"></label>
+                <input asp-for="BookCatalogue.Title" class="form-control" />
+                <span asp-validation-for="BookCatalogue.Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BookCatalogue.Author" class="control-label"></label>
+                <input asp-for="BookCatalogue.Author" class="form-control" />
+                <span asp-validation-for="BookCatalogue.Author" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BookCatalogue.ISBN" class="control-label"></label>
+                <input asp-for="BookCatalogue.ISBN" class="form-control" />
+                <span asp-validation-for="BookCatalogue.ISBN" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BookCatalogue.Publisher" class="control-label"></label>
+                <input asp-for="BookCatalogue.Publisher" class="form-control" />
+                <span asp-validation-for="BookCatalogue.Publisher" class="text-danger"></span>
+            </div>
+
+            <div class="form-group btn-top-margin">
+                <div class="d-flex justify-content-between">
+                    <input type="submit" value="Save" class="btn btn-primary btn-smaller" />
+                    <div style="width: 20px;"></div>
+                    <a class="btn btn-primary btn-sm" href="@(Url.Page("./Index"))" style="background-color: #03045E; border-color: #03045E; color: white;">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var originalValues = {
+                title: $("#BookCatalogue_Title").val(),
+                author: $("#BookCatalogue_Author").val(),
+                isbn: $("#BookCatalogue_ISBN").val(),
+                publisher: $("#BookCatalogue_Publisher").val()
+            };
+
+            $("form").submit(function () {
+                var edited = false;
+
+                if ($("#BookCatalogue_Title").val() !== originalValues.title ||
+                    $("#BookCatalogue_Author").val() !== originalValues.author ||
+                    $("#BookCatalogue_ISBN").val() !== originalValues.isbn ||
+                    $("#BookCatalogue_Publisher").val() !== originalValues.publisher) {
+                    edited = true;
+                }
+
+                if (edited) {
+                    setTimeout(function () {
+                        alert("Book record has been successfully edited.");
+                    }, 2000); // 2-second delay
+                }
+
+                if (edited) {
+                    console.log("Edited condition true");
+                    alert("Book record has been successfully edited.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
