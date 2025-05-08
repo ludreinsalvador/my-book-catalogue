@@ -1,8 +1,8 @@
-# 📚 My Book Catalogue
+# My Book Catalogue
 
 A simple and user-friendly web application using .NET, HTML, CSS, and C# that allows users to catalog their personal book collection. This includes features like viewing, adding, editing, deleting, and filtering/searching through books.
 
-## 🖼️ Screenshots
+## Screenshots
 
 | Page | Screenshot |
 |------|------------|
